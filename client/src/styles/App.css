@@ -1,0 +1,41 @@
+.App {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+}
+.SideMenuAndPageContent {
+    display: flex;
+    flex: 1;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: #ffffff7f;
+}
+.ExcludedLayout {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    background-color: transparent;
+}
+.SideMenu {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 100%;
+    border-right: 1px solid #e8f5ee;
+}
+
+.CreateContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    background-color: #e8f5ee;
+}
+
+.CenteredCard {
+    width: 35%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    background-color: #ffffff;
+}

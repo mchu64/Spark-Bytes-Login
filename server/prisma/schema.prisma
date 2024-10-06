@@ -1,0 +1,73 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String   @id @default(uuid())
+  email         String   @unique
+  name          String?
+  password      String?
+  canPostEvents Boolean  @default(false)
+  isAdmin       Boolean  @default(false)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @default(now()) @updatedAt
+  events        Event[]
+  
+}
+
+
+model Event {
+  event_id    Int            @id @default(autoincrement())
+  post_time   DateTime       @default(now())
+  exp_time    DateTime
+  description String
+  qty         String
+  done        Boolean
+  tags        Tag[]
+  createdBy   User           @relation(fields: [createdById], references: [id])
+  createdById String
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @default(now()) @updatedAt
+  location    Location?
+  photos      Photo[]
+}
+
+model Location {
+  id       Int     @id @default(autoincrement())
+  Address  String
+  floor    Int
+  room     String
+  loc_note String?
+  event    Event   @relation(fields: [event_id], references: [event_id])
+  event_id Int     @unique
+}
+
+model Photo {
+  id       Int    @id @default(autoincrement())
+  photo    String
+  event    Event  @relation(fields: [event_id], references: [event_id])
+  event_id Int    
+}
+
+model Tag {
+  tag_id  Int            @id @default(autoincrement())
+  name    String
+  color   String
+  type    Tag_type       @relation(fields: [type_id], references: [id])
+  type_id Int            
+  events  Event[]
+}
+
+model Tag_type {
+  id   Int    @id @default(autoincrement())
+  name String
+  tags Tag[]
+}

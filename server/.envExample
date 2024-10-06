@@ -1,0 +1,4 @@
+POSTGRES_PASSWORD=password
+POSTGRES_USER=postgres
+DATABASE_URL="postgresql://postgres:password@localhost:5432/postgres?schema=public"
+JWT_TOKEN_SECRET=asupersecretthing
