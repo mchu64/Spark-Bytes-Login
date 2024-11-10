@@ -2,33 +2,6 @@
 
 Spark Bytes is a platform for Boston University students and faculty members to post events that provide foods or snacks. The aim is to reduce food waste resulting from over-purchasing for events and at the same time, help students access free food.
 
-## Installation Guide
-
-### Server
-Navigate to `server` folder, and run `npm install` to install all dependencies. 
-
-Create a `.env` file and add the following lines:
-
-```
-POSTGRES_PASSWORD=password
-POSTGRES_USER=postgres
-DATABASE_URL="postgresql://postgres:password@localhost:5432/postgres?schema=public"
-JWT_TOKEN_SECRET=asupersecretthing
-```
-
-Run `docker compose up` to start the database. This will create a container running the database management system, PostgreSQL.
-
-Next, we need to run a database migration tool to setup the database tables. In a new terminal window, run `npx prisma migrate deploy`.
-You should see that all schemas have successfully been applied. 
-
-_NOTE_: The database has to be running for migration to be successful.
-
-Then, run `npm run dev` to start the Express backend server. The server will connect to the database we've launched and configured.
-
-### Client
-
-In another new terminal window, navifate to the `client` folder, and run `npm install` to install all dependencies. Then, run `npm run dev` to start the development server.
-
 ## Features
 
 1. **Signup & Login:** Users can register and select their event preferences. Upon successful login, a JWT token is provided for authentication.
